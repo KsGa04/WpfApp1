@@ -1,0 +1,676 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище EslettaModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="cafe">
+          <Key>
+            <PropertyRef Name="id_cafe" />
+          </Key>
+          <Property Name="id_cafe" Type="int" Nullable="false" />
+          <Property Name="street_cafe" Type="nvarchar" MaxLength="50" />
+          <Property Name="time_work" Type="nvarchar" MaxLength="50" />
+          <Property Name="id_provider" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="coffee">
+          <Key>
+            <PropertyRef Name="id_coffee" />
+          </Key>
+          <Property Name="id_coffee" Type="int" Nullable="false" />
+          <Property Name="name_coffe" Type="nvarchar" MaxLength="50" />
+          <Property Name="id_type" Type="int" />
+          <Property Name="photo_coffee" Type="nvarchar" MaxLength="50" />
+          <Property Name="info_coffee" Type="nvarchar" MaxLength="600" />
+          <Property Name="coffee_two" Type="nvarchar" MaxLength="50" />
+          <Property Name="coffee_three" Type="nvarchar" MaxLength="50" />
+          <Property Name="coffe_four" Type="nvarchar" MaxLength="50" />
+          <Property Name="id_category" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="order_coffee">
+          <Key>
+            <PropertyRef Name="id_order_coffee" />
+          </Key>
+          <Property Name="id_order_coffee" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_order" Type="int" />
+          <Property Name="id_coffee" Type="int" />
+          <Property Name="ml_coffee" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="orders">
+          <Key>
+            <PropertyRef Name="id_order" />
+          </Key>
+          <Property Name="id_order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_user" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="id_cafe" Type="int" Nullable="false" />
+          <Property Name="delivery_date" Type="date" Nullable="false" />
+          <Property Name="delivery_time" Type="nvarchar" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="product_category">
+          <Key>
+            <PropertyRef Name="id_category" />
+          </Key>
+          <Property Name="id_category" Type="int" Nullable="false" />
+          <Property Name="name_category" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="products">
+          <Key>
+            <PropertyRef Name="id_products" />
+          </Key>
+          <Property Name="id_products" Type="int" Nullable="false" />
+          <Property Name="name_products" Type="nvarchar" MaxLength="50" />
+          <Property Name="id_category" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="provider">
+          <Key>
+            <PropertyRef Name="id_provider" />
+          </Key>
+          <Property Name="id_provider" Type="int" Nullable="false" />
+          <Property Name="name_provider" Type="nvarchar" MaxLength="50" />
+          <Property Name="photo_provider" Type="nvarchar" MaxLength="50" />
+          <Property Name="info_provider" Type="nvarchar" MaxLength="50" />
+          <Property Name="id_products" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="rolee">
+          <Key>
+            <PropertyRef Name="id_role" />
+          </Key>
+          <Property Name="id_role" Type="int" Nullable="false" />
+          <Property Name="name_role" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="type_coffe">
+          <Key>
+            <PropertyRef Name="id_type" />
+          </Key>
+          <Property Name="id_type" Type="int" Nullable="false" />
+          <Property Name="name_type" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="userr">
+          <Key>
+            <PropertyRef Name="id_user" />
+          </Key>
+          <Property Name="id_user" Type="int" Nullable="false" />
+          <Property Name="login" Type="nvarchar" MaxLength="50" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" />
+          <Property Name="id_role" Type="int" />
+        </EntityType>
+        <Association Name="FK__order_cof__id_co__4BAC3F29">
+          <End Role="coffee" Type="Self.coffee" Multiplicity="0..1" />
+          <End Role="order_coffee" Type="Self.order_coffee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="coffee">
+              <PropertyRef Name="id_coffee" />
+            </Principal>
+            <Dependent Role="order_coffee">
+              <PropertyRef Name="id_coffee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__order_cof__id_or__4CA06362">
+          <End Role="orders" Type="Self.orders" Multiplicity="0..1" />
+          <End Role="order_coffee" Type="Self.order_coffee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="orders">
+              <PropertyRef Name="id_order" />
+            </Principal>
+            <Dependent Role="order_coffee">
+              <PropertyRef Name="id_order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__orders__id_cafe__4D94879B">
+          <End Role="cafe" Type="Self.cafe" Multiplicity="1" />
+          <End Role="orders" Type="Self.orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cafe">
+              <PropertyRef Name="id_cafe" />
+            </Principal>
+            <Dependent Role="orders">
+              <PropertyRef Name="id_cafe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cafe_provider">
+          <End Role="provider" Type="Self.provider" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="cafe" Type="Self.cafe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="provider">
+              <PropertyRef Name="id_provider" />
+            </Principal>
+            <Dependent Role="cafe">
+              <PropertyRef Name="id_provider" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_coffee_product_category">
+          <End Role="product_category" Type="Self.product_category" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="coffee" Type="Self.coffee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product_category">
+              <PropertyRef Name="id_category" />
+            </Principal>
+            <Dependent Role="coffee">
+              <PropertyRef Name="id_category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_coffee_type_coffe">
+          <End Role="type_coffe" Type="Self.type_coffe" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="coffee" Type="Self.coffee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type_coffe">
+              <PropertyRef Name="id_type" />
+            </Principal>
+            <Dependent Role="coffee">
+              <PropertyRef Name="id_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_products_product_category">
+          <End Role="product_category" Type="Self.product_category" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="products" Type="Self.products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product_category">
+              <PropertyRef Name="id_category" />
+            </Principal>
+            <Dependent Role="products">
+              <PropertyRef Name="id_category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_provider_products">
+          <End Role="products" Type="Self.products" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="provider" Type="Self.provider" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="id_products" />
+            </Principal>
+            <Dependent Role="provider">
+              <PropertyRef Name="id_products" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_userr_rolee">
+          <End Role="rolee" Type="Self.rolee" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="userr" Type="Self.userr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rolee">
+              <PropertyRef Name="id_role" />
+            </Principal>
+            <Dependent Role="userr">
+              <PropertyRef Name="id_role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище EslettaModelContainer">
+          <EntitySet Name="cafe" EntityType="Self.cafe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="coffee" EntityType="Self.coffee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="order_coffee" EntityType="Self.order_coffee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="orders" EntityType="Self.orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="product_category" EntityType="Self.product_category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="products" EntityType="Self.products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="provider" EntityType="Self.provider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rolee" EntityType="Self.rolee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type_coffe" EntityType="Self.type_coffe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userr" EntityType="Self.userr" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__order_cof__id_co__4BAC3F29" Association="Self.FK__order_cof__id_co__4BAC3F29">
+            <End Role="coffee" EntitySet="coffee" />
+            <End Role="order_coffee" EntitySet="order_coffee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__order_cof__id_or__4CA06362" Association="Self.FK__order_cof__id_or__4CA06362">
+            <End Role="orders" EntitySet="orders" />
+            <End Role="order_coffee" EntitySet="order_coffee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__orders__id_cafe__4D94879B" Association="Self.FK__orders__id_cafe__4D94879B">
+            <End Role="cafe" EntitySet="cafe" />
+            <End Role="orders" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cafe_provider" Association="Self.FK_cafe_provider">
+            <End Role="provider" EntitySet="provider" />
+            <End Role="cafe" EntitySet="cafe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_coffee_product_category" Association="Self.FK_coffee_product_category">
+            <End Role="product_category" EntitySet="product_category" />
+            <End Role="coffee" EntitySet="coffee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_coffee_type_coffe" Association="Self.FK_coffee_type_coffe">
+            <End Role="type_coffe" EntitySet="type_coffe" />
+            <End Role="coffee" EntitySet="coffee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_products_product_category" Association="Self.FK_products_product_category">
+            <End Role="product_category" EntitySet="product_category" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_provider_products" Association="Self.FK_provider_products">
+            <End Role="products" EntitySet="products" />
+            <End Role="provider" EntitySet="provider" />
+          </AssociationSet>
+          <AssociationSet Name="FK_userr_rolee" Association="Self.FK_userr_rolee">
+            <End Role="rolee" EntitySet="rolee" />
+            <End Role="userr" EntitySet="userr" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EslettaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="cafe">
+          <Key>
+            <PropertyRef Name="id_cafe" />
+          </Key>
+          <Property Name="id_cafe" Type="Int32" Nullable="false" />
+          <Property Name="street_cafe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="time_work" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id_provider" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="orders" Relationship="Self.FK__orders__id_cafe__4D94879B" FromRole="cafe" ToRole="orders" />
+          <NavigationProperty Name="provider" Relationship="Self.FK_cafe_provider" FromRole="cafe" ToRole="provider" />
+        </EntityType>
+        <EntityType Name="coffee">
+          <Key>
+            <PropertyRef Name="id_coffee" />
+          </Key>
+          <Property Name="id_coffee" Type="Int32" Nullable="false" />
+          <Property Name="name_coffe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id_type" Type="Int32" />
+          <Property Name="photo_coffee" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="info_coffee" Type="String" MaxLength="600" FixedLength="false" Unicode="true" />
+          <Property Name="coffee_two" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="coffee_three" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="coffe_four" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id_category" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="order_coffee" Relationship="Self.FK__order_cof__id_co__4BAC3F29" FromRole="coffee" ToRole="order_coffee" />
+          <NavigationProperty Name="product_category" Relationship="Self.FK_coffee_product_category" FromRole="coffee" ToRole="product_category" />
+          <NavigationProperty Name="type_coffe" Relationship="Self.FK_coffee_type_coffe" FromRole="coffee" ToRole="type_coffe" />
+        </EntityType>
+        <EntityType Name="order_coffee">
+          <Key>
+            <PropertyRef Name="id_order_coffee" />
+          </Key>
+          <Property Name="id_order_coffee" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_order" Type="Int32" />
+          <Property Name="id_coffee" Type="Int32" />
+          <Property Name="ml_coffee" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="coffee" Relationship="Self.FK__order_cof__id_co__4BAC3F29" FromRole="order_coffee" ToRole="coffee" />
+          <NavigationProperty Name="orders" Relationship="Self.FK__order_cof__id_or__4CA06362" FromRole="order_coffee" ToRole="orders" />
+        </EntityType>
+        <EntityType Name="orders">
+          <Key>
+            <PropertyRef Name="id_order" />
+          </Key>
+          <Property Name="id_order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_user" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_cafe" Type="Int32" Nullable="false" />
+          <Property Name="delivery_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="delivery_time" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="cafe" Relationship="Self.FK__orders__id_cafe__4D94879B" FromRole="orders" ToRole="cafe" />
+          <NavigationProperty Name="order_coffee" Relationship="Self.FK__order_cof__id_or__4CA06362" FromRole="orders" ToRole="order_coffee" />
+        </EntityType>
+        <EntityType Name="product_category">
+          <Key>
+            <PropertyRef Name="id_category" />
+          </Key>
+          <Property Name="id_category" Type="Int32" Nullable="false" />
+          <Property Name="name_category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="coffee" Relationship="Self.FK_coffee_product_category" FromRole="product_category" ToRole="coffee" />
+          <NavigationProperty Name="products" Relationship="Self.FK_products_product_category" FromRole="product_category" ToRole="products" />
+        </EntityType>
+        <EntityType Name="products">
+          <Key>
+            <PropertyRef Name="id_products" />
+          </Key>
+          <Property Name="id_products" Type="Int32" Nullable="false" />
+          <Property Name="name_products" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id_category" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="product_category" Relationship="Self.FK_products_product_category" FromRole="products" ToRole="product_category" />
+          <NavigationProperty Name="provider" Relationship="Self.FK_provider_products" FromRole="products" ToRole="provider" />
+        </EntityType>
+        <EntityType Name="provider">
+          <Key>
+            <PropertyRef Name="id_provider" />
+          </Key>
+          <Property Name="id_provider" Type="Int32" Nullable="false" />
+          <Property Name="name_provider" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="photo_provider" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="info_provider" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id_products" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="cafe" Relationship="Self.FK_cafe_provider" FromRole="provider" ToRole="cafe" />
+          <NavigationProperty Name="products" Relationship="Self.FK_provider_products" FromRole="provider" ToRole="products" />
+        </EntityType>
+        <EntityType Name="rolee">
+          <Key>
+            <PropertyRef Name="id_role" />
+          </Key>
+          <Property Name="id_role" Type="Int32" Nullable="false" />
+          <Property Name="name_role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="userr" Relationship="Self.FK_userr_rolee" FromRole="rolee" ToRole="userr" />
+        </EntityType>
+        <EntityType Name="type_coffe">
+          <Key>
+            <PropertyRef Name="id_type" />
+          </Key>
+          <Property Name="id_type" Type="Int32" Nullable="false" />
+          <Property Name="name_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="coffee" Relationship="Self.FK_coffee_type_coffe" FromRole="type_coffe" ToRole="coffee" />
+        </EntityType>
+        <EntityType Name="userr">
+          <Key>
+            <PropertyRef Name="id_user" />
+          </Key>
+          <Property Name="id_user" Type="Int32" Nullable="false" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id_role" Type="Int32" />
+          <NavigationProperty Name="rolee" Relationship="Self.FK_userr_rolee" FromRole="userr" ToRole="rolee" />
+        </EntityType>
+        <Association Name="FK__orders__id_cafe__4D94879B">
+          <End Role="cafe" Type="Self.cafe" Multiplicity="1" />
+          <End Role="orders" Type="Self.orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cafe">
+              <PropertyRef Name="id_cafe" />
+            </Principal>
+            <Dependent Role="orders">
+              <PropertyRef Name="id_cafe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cafe_provider">
+          <End Role="provider" Type="Self.provider" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="cafe" Type="Self.cafe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="provider">
+              <PropertyRef Name="id_provider" />
+            </Principal>
+            <Dependent Role="cafe">
+              <PropertyRef Name="id_provider" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__order_cof__id_co__4BAC3F29">
+          <End Role="coffee" Type="Self.coffee" Multiplicity="0..1" />
+          <End Role="order_coffee" Type="Self.order_coffee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="coffee">
+              <PropertyRef Name="id_coffee" />
+            </Principal>
+            <Dependent Role="order_coffee">
+              <PropertyRef Name="id_coffee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_coffee_product_category">
+          <End Role="product_category" Type="Self.product_category" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="coffee" Type="Self.coffee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product_category">
+              <PropertyRef Name="id_category" />
+            </Principal>
+            <Dependent Role="coffee">
+              <PropertyRef Name="id_category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_coffee_type_coffe">
+          <End Role="type_coffe" Type="Self.type_coffe" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="coffee" Type="Self.coffee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type_coffe">
+              <PropertyRef Name="id_type" />
+            </Principal>
+            <Dependent Role="coffee">
+              <PropertyRef Name="id_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__order_cof__id_or__4CA06362">
+          <End Role="orders" Type="Self.orders" Multiplicity="0..1" />
+          <End Role="order_coffee" Type="Self.order_coffee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="orders">
+              <PropertyRef Name="id_order" />
+            </Principal>
+            <Dependent Role="order_coffee">
+              <PropertyRef Name="id_order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_products_product_category">
+          <End Role="product_category" Type="Self.product_category" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="products" Type="Self.products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product_category">
+              <PropertyRef Name="id_category" />
+            </Principal>
+            <Dependent Role="products">
+              <PropertyRef Name="id_category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_provider_products">
+          <End Role="products" Type="Self.products" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="provider" Type="Self.provider" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="id_products" />
+            </Principal>
+            <Dependent Role="provider">
+              <PropertyRef Name="id_products" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_userr_rolee">
+          <End Role="rolee" Type="Self.rolee" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="userr" Type="Self.userr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rolee">
+              <PropertyRef Name="id_role" />
+            </Principal>
+            <Dependent Role="userr">
+              <PropertyRef Name="id_role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EslettaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="cafe" EntityType="Self.cafe" />
+          <EntitySet Name="coffee" EntityType="Self.coffee" />
+          <EntitySet Name="order_coffee" EntityType="Self.order_coffee" />
+          <EntitySet Name="orders" EntityType="Self.orders" />
+          <EntitySet Name="product_category" EntityType="Self.product_category" />
+          <EntitySet Name="products" EntityType="Self.products" />
+          <EntitySet Name="provider" EntityType="Self.provider" />
+          <EntitySet Name="rolee" EntityType="Self.rolee" />
+          <EntitySet Name="type_coffe" EntityType="Self.type_coffe" />
+          <EntitySet Name="userr" EntityType="Self.userr" />
+          <AssociationSet Name="FK__orders__id_cafe__4D94879B" Association="Self.FK__orders__id_cafe__4D94879B">
+            <End Role="cafe" EntitySet="cafe" />
+            <End Role="orders" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cafe_provider" Association="Self.FK_cafe_provider">
+            <End Role="provider" EntitySet="provider" />
+            <End Role="cafe" EntitySet="cafe" />
+          </AssociationSet>
+          <AssociationSet Name="FK__order_cof__id_co__4BAC3F29" Association="Self.FK__order_cof__id_co__4BAC3F29">
+            <End Role="coffee" EntitySet="coffee" />
+            <End Role="order_coffee" EntitySet="order_coffee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_coffee_product_category" Association="Self.FK_coffee_product_category">
+            <End Role="product_category" EntitySet="product_category" />
+            <End Role="coffee" EntitySet="coffee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_coffee_type_coffe" Association="Self.FK_coffee_type_coffe">
+            <End Role="type_coffe" EntitySet="type_coffe" />
+            <End Role="coffee" EntitySet="coffee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__order_cof__id_or__4CA06362" Association="Self.FK__order_cof__id_or__4CA06362">
+            <End Role="orders" EntitySet="orders" />
+            <End Role="order_coffee" EntitySet="order_coffee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_products_product_category" Association="Self.FK_products_product_category">
+            <End Role="product_category" EntitySet="product_category" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_provider_products" Association="Self.FK_provider_products">
+            <End Role="products" EntitySet="products" />
+            <End Role="provider" EntitySet="provider" />
+          </AssociationSet>
+          <AssociationSet Name="FK_userr_rolee" Association="Self.FK_userr_rolee">
+            <End Role="rolee" EntitySet="rolee" />
+            <End Role="userr" EntitySet="userr" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище EslettaModelContainer" CdmEntityContainer="EslettaEntities">
+          <EntitySetMapping Name="cafe">
+            <EntityTypeMapping TypeName="EslettaModel.cafe">
+              <MappingFragment StoreEntitySet="cafe">
+                <ScalarProperty Name="id_cafe" ColumnName="id_cafe" />
+                <ScalarProperty Name="street_cafe" ColumnName="street_cafe" />
+                <ScalarProperty Name="time_work" ColumnName="time_work" />
+                <ScalarProperty Name="id_provider" ColumnName="id_provider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="coffee">
+            <EntityTypeMapping TypeName="EslettaModel.coffee">
+              <MappingFragment StoreEntitySet="coffee">
+                <ScalarProperty Name="id_coffee" ColumnName="id_coffee" />
+                <ScalarProperty Name="name_coffe" ColumnName="name_coffe" />
+                <ScalarProperty Name="id_type" ColumnName="id_type" />
+                <ScalarProperty Name="photo_coffee" ColumnName="photo_coffee" />
+                <ScalarProperty Name="info_coffee" ColumnName="info_coffee" />
+                <ScalarProperty Name="coffee_two" ColumnName="coffee_two" />
+                <ScalarProperty Name="coffee_three" ColumnName="coffee_three" />
+                <ScalarProperty Name="coffe_four" ColumnName="coffe_four" />
+                <ScalarProperty Name="id_category" ColumnName="id_category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="order_coffee">
+            <EntityTypeMapping TypeName="EslettaModel.order_coffee">
+              <MappingFragment StoreEntitySet="order_coffee">
+                <ScalarProperty Name="id_order_coffee" ColumnName="id_order_coffee" />
+                <ScalarProperty Name="id_order" ColumnName="id_order" />
+                <ScalarProperty Name="id_coffee" ColumnName="id_coffee" />
+                <ScalarProperty Name="ml_coffee" ColumnName="ml_coffee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="orders">
+            <EntityTypeMapping TypeName="EslettaModel.orders">
+              <MappingFragment StoreEntitySet="orders">
+                <ScalarProperty Name="id_order" ColumnName="id_order" />
+                <ScalarProperty Name="name_user" ColumnName="name_user" />
+                <ScalarProperty Name="id_cafe" ColumnName="id_cafe" />
+                <ScalarProperty Name="delivery_date" ColumnName="delivery_date" />
+                <ScalarProperty Name="delivery_time" ColumnName="delivery_time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="product_category">
+            <EntityTypeMapping TypeName="EslettaModel.product_category">
+              <MappingFragment StoreEntitySet="product_category">
+                <ScalarProperty Name="id_category" ColumnName="id_category" />
+                <ScalarProperty Name="name_category" ColumnName="name_category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="products">
+            <EntityTypeMapping TypeName="EslettaModel.products">
+              <MappingFragment StoreEntitySet="products">
+                <ScalarProperty Name="id_products" ColumnName="id_products" />
+                <ScalarProperty Name="name_products" ColumnName="name_products" />
+                <ScalarProperty Name="id_category" ColumnName="id_category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="provider">
+            <EntityTypeMapping TypeName="EslettaModel.provider">
+              <MappingFragment StoreEntitySet="provider">
+                <ScalarProperty Name="id_provider" ColumnName="id_provider" />
+                <ScalarProperty Name="name_provider" ColumnName="name_provider" />
+                <ScalarProperty Name="photo_provider" ColumnName="photo_provider" />
+                <ScalarProperty Name="info_provider" ColumnName="info_provider" />
+                <ScalarProperty Name="id_products" ColumnName="id_products" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rolee">
+            <EntityTypeMapping TypeName="EslettaModel.rolee">
+              <MappingFragment StoreEntitySet="rolee">
+                <ScalarProperty Name="id_role" ColumnName="id_role" />
+                <ScalarProperty Name="name_role" ColumnName="name_role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type_coffe">
+            <EntityTypeMapping TypeName="EslettaModel.type_coffe">
+              <MappingFragment StoreEntitySet="type_coffe">
+                <ScalarProperty Name="id_type" ColumnName="id_type" />
+                <ScalarProperty Name="name_type" ColumnName="name_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userr">
+            <EntityTypeMapping TypeName="EslettaModel.userr">
+              <MappingFragment StoreEntitySet="userr">
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="id_role" ColumnName="id_role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
