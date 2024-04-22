@@ -1,0 +1,70 @@
+﻿<Page x:Class="WpfApp1.Pages.MenuCoffee"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MenuCoffee" IsVisibleChanged="Page_IsVisibleChanged">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="17.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+
+        </Grid.RowDefinitions>
+
+        <WrapPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Поиск  " Margin="10,10,10,10"  FontSize="20" Foreground="#292d30"  FontFamily="Zekton" FontWeight="Bold"/>
+                <TextBox x:Name="TBoxSerach" TextChanged="TBoxSerach_TextChanged"  Height="25" Width="300"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Категория:" FontSize="20"  Margin="10,10,10,10" Foreground="#292d30" FontFamily="Zekton" FontWeight="Bold"/>
+                <ComboBox Name="CmbCat" SelectionChanged="CmbCat_SelectionChanged"  DisplayMemberPath="name_type" Height="30" Width="150"/>
+            </StackPanel>
+        </WrapPanel>
+
+        <ListView x:Name="Lucas" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Stretch"  Grid.Row="1" Grid.Column="1">
+
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+
+                    <Grid Width="290">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Image Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Source="{Binding Path=GetPhoto}" Height="200" Width="200"/>
+                        <TextBlock Grid.Row="1" TextWrapping="Wrap" Margin="0 5 0 0" FontFamily="Zekton" TextAlignment="Center" FontSize="14" Text="{Binding Path=name_coffe}" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Row="2" TextWrapping="Wrap" Margin="0 5 0 0" FontFamily="Zekton" TextAlignment="Center" FontSize="14" Text="{Binding Path=type_coffe.name_type ,StringFormat={}   Вид напитка: {0}}" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Row="3" Margin="0 5 0 0" FontFamily="Zekton" TextAlignment="Center" FontSize="14" Text="{Binding Path=coffee_three}" HorizontalAlignment="Center"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItem_PreviewMouseLeftButtonDown" />
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+        <Button Grid.Row="3" Content="Оформить заказ" Background="Transparent" Foreground="#292d30" Width="250" Margin="0 0 0 0" FontFamily="Zekton" x:Name="AddToCfart" Click="AddToCfart_Click"/>
+        <Button Grid.Row="3" Content="Назад" Background="Transparent" Foreground="#292d30" Width="90" HorizontalAlignment="Left" Margin="10,0" FontFamily="Zekton" x:Name="Add" Click="Add_Click"/>
+    </Grid>
+</Page>

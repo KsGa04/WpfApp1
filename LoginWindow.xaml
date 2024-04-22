@@ -1,0 +1,35 @@
+﻿<Window x:Class="WpfApp1.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="" Height="250" Width="400">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="Pages/17.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <TextBlock Text="Вход в личный кабинет" FontWeight="UltraBold" FontSize="25" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#292d30"  FontFamily="Zekton"/>
+        <TextBlock Text="Логин" FontWeight="UltraBold" Grid.Row="1" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 20 0" Foreground="#292d30"  FontFamily="Zekton"/>
+        <TextBlock Text="Пароль" FontWeight="UltraBold" Grid.Row="2" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 20 0" Foreground="#292d30"  FontFamily="Zekton"/>
+        <TextBox x:Name="TB" Grid.Column="1" Grid.Row="1" Width="150" Height="30" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        <PasswordBox x:Name="PB" Grid.Row="2" Grid.Column="1" Width="150" Height="30" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Button x:Name="vhod" Content="Вход" Background="Transparent" FontWeight="UltraBold" HorizontalAlignment="Left" VerticalAlignment="Center" Click="vhod_Click"  Foreground="#292d30"  FontFamily="Zekton" Width="100" Height="30" Margin="5" Grid.Row="3" Grid.Column="1" />
+
+    </Grid>
+</Window>

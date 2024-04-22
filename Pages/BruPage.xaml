@@ -1,0 +1,15 @@
+﻿<Page x:Class="WpfApp1.Pages.BruPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="BruPage">
+
+    <Grid>
+        <MediaElement Source="C:\Users\Дарья\Desktop\дипломы24\Кофе\Cold.mp4" Stretch="Uniform"  Margin="0 50 0 0"/>
+        <Button x:Name="Baf" Content="Назад" Click="Baf_Click"  Width="115" Margin="0 0 1080 450" FontFamily="Zekton" Foreground="WhiteSmoke" Background="Transparent"/>
+    </Grid>
+</Page>
