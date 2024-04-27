@@ -62,10 +62,9 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <Label Content="{Binding Наименование}" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-                            <Image Source="{Binding Изображение}" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="2"/>
-                            <Label Content="Всего:" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-                            <Label Content="{Binding Сумма}" FontSize="12" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="Black"/>
-                            <ToggleButton x:Name="toggleButton" HorizontalAlignment="Right" VerticalAlignment="Bottom" ClickMode="Press" Grid.Column="2" Width="25" Height="25" Background="White" BorderThickness="0" Click="toggleButton_Click">
+                            <Image HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="2"/>
+                            <Label Content="{Binding Сумма}" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="Black"/>
+                            <ToggleButton x:Name="toggleButton" HorizontalAlignment="Right" VerticalAlignment="Bottom" ClickMode="Press" Grid.Column="2" Width="25" Height="25" Background="White" BorderThickness="0" >
                                 <Image Source="../Resources/delete.png" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
                             </ToggleButton>
                         </Grid>

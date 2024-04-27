@@ -11,7 +11,8 @@ namespace WpfApp1.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.IO;
+
     public partial class provider
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,9 +24,9 @@ namespace WpfApp1.Models
         {
             get
             {
-                if (photo_coffee is null)
+                if (photo_provider is null)
                     return null;
-                return Directory.GetCurrentDirectory() + @"\Images\" + photo_coffee.Trim();
+                return Directory.GetCurrentDirectory() + @"\Images\" + photo_provider.Trim();
             }
         }
         public int id_provider { get; set; }

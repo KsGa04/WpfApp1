@@ -62,13 +62,14 @@ namespace WpfApp1.Pages
             else
             {
                 orders order = new orders();
+                order.id_status = 1;
                 db.orders.Add(order);
 
                 order_coffee order_Coffee = new order_coffee();
                 order_Coffee.id_order = order.id_order;
                 order_Coffee.id_coffee = id;
                 order_Coffee.ml_coffee = content;
-                db.order_coffees.Add(order_Coffee);
+                db.order_coffee.Add(order_Coffee);
                 db.SaveChanges();
                 MessageBox.Show("Напиток добавлен в заказ");
             }

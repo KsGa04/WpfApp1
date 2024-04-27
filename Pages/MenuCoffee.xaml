@@ -51,7 +51,7 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <Image Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Source="{Binding Path=GetPhoto}" Height="200" Width="200"/>
+                        <Image Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Height="200" Width="200" Source="{Binding Path=GetPhoto}"/>
                         <TextBlock Grid.Row="1" TextWrapping="Wrap" Margin="0 5 0 0" FontFamily="Zekton" TextAlignment="Center" FontSize="14" Text="{Binding Path=name_coffe}" HorizontalAlignment="Center"/>
                         <TextBlock Grid.Row="2" TextWrapping="Wrap" Margin="0 5 0 0" FontFamily="Zekton" TextAlignment="Center" FontSize="14" Text="{Binding Path=type_coffe.name_type ,StringFormat={}   Вид напитка: {0}}" HorizontalAlignment="Center"/>
                         <TextBlock Grid.Row="3" Margin="0 5 0 0" FontFamily="Zekton" TextAlignment="Center" FontSize="14" Text="{Binding Path=coffee_three}" HorizontalAlignment="Center"/>

@@ -78,6 +78,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Class\DrinkViewModel.cs" />
     <Compile Include="Models\cafe.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

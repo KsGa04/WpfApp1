@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfApp1.Models;
+using WpfApp1.Class;
+using System.IO;
 
 namespace WpfApp1.Pages
 {
@@ -22,11 +24,16 @@ namespace WpfApp1.Pages
     /// </summary>
     public partial class ZakaazPage : Page
     {
+        public EslettaEntities db = new EslettaEntities();
+        public orders order;
+        public int id;
+        public List<DrinkViewModel> drinks = new List<DrinkViewModel>();
         public ZakaazPage(object p)
         {
             InitializeComponent();
             CmbAdress.ItemsSource = EslettaEntities.GetContext().cafes.ToList();
             CmbTovar.ItemsSource = EslettaEntities.GetContext().coffees.ToList();
+            //ListViewLoad();
         }
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
@@ -40,48 +47,41 @@ namespace WpfApp1.Pages
             NavigationService.Navigate(new Pages.MenuCoffee());
         }
 
-        public void ListViewLoad()
-        {
-            заказ = db.Заказ.Where(x => x.Пользователь == CurrentUser && x.Дата_оформления == null).FirstOrDefault();
-            id = заказ.Номер;
+    //    public void ListViewLoad()
+    //    {
+    //        order = db.orders.LastOrDefault();
+    //        id = order.id_order;
 
-            productsWithCounts = db.Продукция
-    .Join(
-        db.Продуция_заказ,
-        product => product.Номер,
-        order => order.Продукция,
-        (product, order) => new ProductViewModel
-        {
-            Номер = order.Номер,
-            Наименование = product.Наименование,
-            Изображение = product.Изображение,
-            Сумма = (decimal)order.Сумма,
-            Количество = (int)order.Количество,
-            Продукция = (int)order.Продукция,
-            Заказ = (int)order.Заказ
-        }).Where(x => x.Заказ == id)
-    .ToList();
-            ListProducts.ItemsSource = productsWithCounts;
-            total_sum.Content = productsWithCounts.Sum(x => x.Сумма).ToString();
+    //        drinks = db.coffees
+    //.Join(
+    //    db.order_coffee,
+    //    product => product.id_coffee,
+    //    order => order.id_coffee,
+    //    (product, order) => new DrinkViewModel
+    //    {
+    //        Номер = (int)order.id_order,
+    //        Наименование = product.name_coffe,
+    //        Изображение = Directory.GetCurrentDirectory() + @"\Images\" + product.photo_coffee.Trim(),
+    //        Сумма = order.ml_coffee,
+    //    }).Where(x => x.Заказ == id)
+    //.ToList();
+    //        ListDrinks.ItemsSource = drinks;
 
-        }
+    //    }
+
         private void toggleButton_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as ToggleButton;
             if (button != null)
             {
-                var product = button.DataContext as ProductViewModel;
+                var product = button.DataContext as DrinkViewModel;
                 if (product != null)
                 {
                     int id = product.Номер;
-                    Продуция_заказ продуция_Заказ = db.Продуция_заказ.Where(x => x.Номер == id).FirstOrDefault();
-                    Заказ заказ = db.Заказ.Where(x => x.Номер == продуция_Заказ.Заказ).FirstOrDefault();
-                    заказ.Сумма -= db.Продукция.Where(x => x.Номер == продуция_Заказ.Продукция).FirstOrDefault().Цена;
-                    total_sum.Content = заказ.Сумма.ToString();
-                    db.Продуция_заказ.Remove(продуция_Заказ);
+                    order_coffee order_Coffee = db.order_coffee.Where(x => x.id_order_coffee == id).FirstOrDefault();
+                    db.order_coffee.Remove(order_Coffee);
                     db.SaveChanges();
-                    ListViewLoad();
-                    EllipseBasketCount();
+                    //ListViewLoad();
                 }
             }
         }
