@@ -11,21 +11,15 @@ namespace WpfApp1.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.IO;
-
+    
     public partial class coffee
     {
-        public string GetPhoto
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public coffee()
         {
-            get
-            {
-                if (photo_coffee is null)
-                    return null;
-                var image = Directory.GetCurrentDirectory() + @"\Images\" + photo_coffee.Trim();
-                return Directory.GetCurrentDirectory() + @"\Images\" + photo_coffee.Trim();
-            }
+            this.order_coffee = new HashSet<order_coffee>();
         }
-
+    
         public int id_coffee { get; set; }
         public string name_coffe { get; set; }
         public Nullable<int> id_type { get; set; }
@@ -36,6 +30,7 @@ namespace WpfApp1.Models
         public string coffe_four { get; set; }
         public int id_category { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<order_coffee> order_coffee { get; set; }
         public virtual product_category product_category { get; set; }
         public virtual type_coffe type_coffe { get; set; }

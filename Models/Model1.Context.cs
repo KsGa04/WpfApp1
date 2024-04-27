@@ -19,23 +19,22 @@ namespace WpfApp1.Models
             : base("name=EslettaEntities")
         {
         }
-        public static EslettaEntities _context;
-        public static EslettaEntities GetContext() => _context ?? (_context = new EslettaEntities());
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<cafe> cafes { get; set; }
-        public virtual DbSet<coffee> coffees { get; set; }
+        public virtual DbSet<cafe> cafe { get; set; }
+        public virtual DbSet<coffee> coffee { get; set; }
         public virtual DbSet<order_coffee> order_coffee { get; set; }
         public virtual DbSet<orders> orders { get; set; }
         public virtual DbSet<product_category> product_category { get; set; }
         public virtual DbSet<products> products { get; set; }
-        public virtual DbSet<provider> providers { get; set; }
-        public virtual DbSet<rolee> rolees { get; set; }
+        public virtual DbSet<provider> provider { get; set; }
+        public virtual DbSet<rolee> rolee { get; set; }
         public virtual DbSet<status> status { get; set; }
         public virtual DbSet<type_coffe> type_coffe { get; set; }
-        public virtual DbSet<userr> userrs { get; set; }
+        public virtual DbSet<userr> userr { get; set; }
     }
 }

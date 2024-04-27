@@ -22,6 +22,7 @@ namespace WpfApp1.Models
     
         public int id_order { get; set; }
         public string name_user { get; set; }
+        public string telephone { get; set; }
         public Nullable<int> id_cafe { get; set; }
         public Nullable<System.DateTime> delivery_date { get; set; }
         public string delivery_time { get; set; }

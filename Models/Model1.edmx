@@ -43,6 +43,7 @@
           </Key>
           <Property Name="id_order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name_user" Type="nvarchar(max)" />
+          <Property Name="telephone" Type="nchar" MaxLength="11" />
           <Property Name="id_cafe" Type="int" />
           <Property Name="delivery_date" Type="date" />
           <Property Name="delivery_time" Type="nvarchar" MaxLength="5" />
@@ -338,6 +339,7 @@
           </Key>
           <Property Name="id_order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name_user" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="telephone" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
           <Property Name="id_cafe" Type="Int32" />
           <Property Name="delivery_date" Type="DateTime" Precision="0" />
           <Property Name="delivery_time" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
@@ -642,6 +644,7 @@
               <MappingFragment StoreEntitySet="orders">
                 <ScalarProperty Name="id_order" ColumnName="id_order" />
                 <ScalarProperty Name="name_user" ColumnName="name_user" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
                 <ScalarProperty Name="id_cafe" ColumnName="id_cafe" />
                 <ScalarProperty Name="delivery_date" ColumnName="delivery_date" />
                 <ScalarProperty Name="delivery_time" ColumnName="delivery_time" />
