@@ -19,7 +19,15 @@ namespace WpfApp1.Models
         {
             this.cafe = new HashSet<cafe>();
         }
-    
+        public string GetPhoto
+        {
+            get
+            {
+                if (photo_coffee is null)
+                    return null;
+                return Directory.GetCurrentDirectory() + @"\Images\" + photo_coffee.Trim();
+            }
+        }
         public int id_provider { get; set; }
         public string name_provider { get; set; }
         public string photo_provider { get; set; }
