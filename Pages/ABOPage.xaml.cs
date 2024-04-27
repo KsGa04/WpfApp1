@@ -29,7 +29,7 @@ namespace WpfApp1.Pages
         public ABOPage(coffee coffee)
         {
             InitializeComponent();
-            int id = coffee.id_coffee;
+            id = coffee.id_coffee;
             coffee coffee1 = db.coffees.Where(x => x.id_coffee == id).FirstOrDefault();
             coffee_name.Text = coffee1.name_coffe;
             info_coffee.Text = coffee1.info_coffee;
@@ -61,17 +61,31 @@ namespace WpfApp1.Pages
             }
             else
             {
-                orders order = new orders();
-                order.id_status = 1;
-                db.orders.Add(order);
+                orders last_order = db.orders.OrderByDescending(x => x.id_order).FirstOrDefault();
+                if (last_order.id_status == 2)
+                {
+                    orders order = new orders();
+                    order.id_status = 1;
+                    db.orders.Add(order);
 
-                order_coffee order_Coffee = new order_coffee();
-                order_Coffee.id_order = order.id_order;
-                order_Coffee.id_coffee = id;
-                order_Coffee.ml_coffee = content;
-                db.order_coffee.Add(order_Coffee);
-                db.SaveChanges();
-                MessageBox.Show("Напиток добавлен в заказ");
+                    order_coffee order_Coffee = new order_coffee();
+                    order_Coffee.id_order = order.id_order;
+                    order_Coffee.id_coffee = id;
+                    order_Coffee.ml_coffee = content;
+                    db.order_coffee.Add(order_Coffee);
+                    db.SaveChanges();
+                    MessageBox.Show("Напиток добавлен в заказ");
+                }
+                else
+                {
+                    order_coffee order_Coffee = new order_coffee();
+                    order_Coffee.id_order = last_order.id_order;
+                    order_Coffee.id_coffee = id;
+                    order_Coffee.ml_coffee = content;
+                    db.order_coffee.Add(order_Coffee);
+                    db.SaveChanges();
+                    MessageBox.Show("Напиток добавлен в заказ");
+                }
             }
         }
     }

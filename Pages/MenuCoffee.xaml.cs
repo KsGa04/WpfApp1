@@ -77,11 +77,24 @@ namespace WpfApp1.Pages
 
         private void AddToCfart_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Pages.ZakaazPage(null));
+            orders last_order = db.orders.OrderByDescending(x => x.id_order).FirstOrDefault();
+            if (last_order.id_status == 2)
+            {
+                orders order = new orders();
+                order.id_status = 1;
+                db.orders.Add(order);
+                db.SaveChanges();
+                NavigationService.Navigate(new Pages.ZakaazPage(null));
+            }
+            else
+            {
+                NavigationService.Navigate(new Pages.ZakaazPage(null));
+            }
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
+
             NavigationService.Navigate(new Pages.Menu());
         }
 
@@ -96,7 +109,7 @@ namespace WpfApp1.Pages
                 aboutCoffee.Show();
 
             }
-            
         }
+       
     }
 }

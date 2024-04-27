@@ -12,7 +12,7 @@ namespace WpfApp1.Class
         public string Наименование { get; set; }
         public string Изображение { get; set; }
         public string Сумма { get; set; }
-        public int Продукция { get; set; }
-        public int Заказ { get; set; }
+        public int Заказ {  get; set; }
+        public int Напиток { get; set; }
     }
 }

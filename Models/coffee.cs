@@ -21,6 +21,7 @@ namespace WpfApp1.Models
             {
                 if (photo_coffee is null)
                     return null;
+                var image = Directory.GetCurrentDirectory() + @"\Images\" + photo_coffee.Trim();
                 return Directory.GetCurrentDirectory() + @"\Images\" + photo_coffee.Trim();
             }
         }

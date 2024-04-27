@@ -32,12 +32,18 @@ namespace WpfApp1.Pages
         {
             InitializeComponent();
             CmbAdress.ItemsSource = EslettaEntities.GetContext().cafes.ToList();
-            CmbTovar.ItemsSource = EslettaEntities.GetContext().coffees.ToList();
-            //ListViewLoad();
+            ListViewLoad();
         }
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
+            order = db.orders.Where(x => x.id_status == 1).OrderByDescending(x => x.id_order).FirstOrDefault();
+            order.id_status = 2;
+            order.id_cafe = CmbAdress.SelectedIndex + 1;
+            order.name_user = TxtName.Text;
+            order.delivery_date = Calend.SelectedDate.Value;
+            order.delivery_time = TxtPhone.Text;
+            db.SaveChanges();
             MessageBox.Show("Вы оформили заказ!");
             NavigationService.GoBack();
         }
@@ -46,28 +52,32 @@ namespace WpfApp1.Pages
         {
             NavigationService.Navigate(new Pages.MenuCoffee());
         }
+        private const string ImagesFolderPath = "C:\\Users\\pc\\Downloads\\Приложение 3\\pril\\WpfApp1\\bin\\Debug\\Images\\";
 
-    //    public void ListViewLoad()
-    //    {
-    //        order = db.orders.LastOrDefault();
-    //        id = order.id_order;
+        public void ListViewLoad()
+        {
+            order = db.orders.Where(x => x.id_status == 1).OrderByDescending(x => x.id_order).FirstOrDefault();
 
-    //        drinks = db.coffees
-    //.Join(
-    //    db.order_coffee,
-    //    product => product.id_coffee,
-    //    order => order.id_coffee,
-    //    (product, order) => new DrinkViewModel
-    //    {
-    //        Номер = (int)order.id_order,
-    //        Наименование = product.name_coffe,
-    //        Изображение = Directory.GetCurrentDirectory() + @"\Images\" + product.photo_coffee.Trim(),
-    //        Сумма = order.ml_coffee,
-    //    }).Where(x => x.Заказ == id)
-    //.ToList();
-    //        ListDrinks.ItemsSource = drinks;
+            id = order.id_order;
 
-    //    }
+            drinks = db.coffees
+    .Join(
+        db.order_coffee,
+        product => product.id_coffee,
+        order => order.id_coffee,
+        (product, order) => new DrinkViewModel
+        {
+            Номер = (int)order.id_order_coffee,
+            Наименование = product.name_coffe,
+            Изображение = ImagesFolderPath + product.photo_coffee.Trim(),
+            Сумма = order.ml_coffee,
+            Заказ = (int)order.id_order,
+            Напиток = product.id_coffee
+        }).Where(x => x.Заказ == id)
+    .ToList();
+            ListDrinks.ItemsSource = drinks;
+
+        }
 
         private void toggleButton_Click(object sender, RoutedEventArgs e)
         {
@@ -79,9 +89,10 @@ namespace WpfApp1.Pages
                 {
                     int id = product.Номер;
                     order_coffee order_Coffee = db.order_coffee.Where(x => x.id_order_coffee == id).FirstOrDefault();
+
                     db.order_coffee.Remove(order_Coffee);
                     db.SaveChanges();
-                    //ListViewLoad();
+                    ListViewLoad();
                 }
             }
         }
