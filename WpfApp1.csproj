@@ -78,34 +78,34 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="cafe.cs">
+    <Compile Include="Models\cafe.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="coffee.cs">
+    <Compile Include="Models\coffee.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model1.Context.cs">
+    <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model1.cs">
+    <Compile Include="Models\Model1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model1.Designer.cs">
+    <Compile Include="Models\Model1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="orders.cs">
+    <Compile Include="Models\orders.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="order_coffee.cs">
+    <Compile Include="Models\order_coffee.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Pages\ABOPage.xaml.cs">
@@ -138,10 +138,10 @@
     <Compile Include="Pages\ZakaazPage.xaml.cs">
       <DependentUpon>ZakaazPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="products.cs">
+    <Compile Include="Models\products.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="product_category.cs">
+    <Compile Include="Models\product_category.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
@@ -149,16 +149,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="provider.cs">
+    <Compile Include="Models\provider.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="rolee.cs">
+    <Compile Include="Models\rolee.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="type_coffe.cs">
+    <Compile Include="Models\type_coffe.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="userr.cs">
+    <Compile Include="Models\userr.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Windows\AboutCoffeeWindow.xaml.cs">
@@ -254,11 +254,11 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Model1.edmx">
+    <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model1.edmx.diagram">
+    <None Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
@@ -281,16 +281,14 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Model1.Context.tt">
+    <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Model1.tt">
+    <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>

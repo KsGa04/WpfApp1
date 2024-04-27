@@ -33,10 +33,45 @@ namespace WpfApp1.Pages
             coffee coffee1 = db.coffees.Where(x => x.id_coffee == id).FirstOrDefault();
             coffee_name.Text = coffee1.name_coffe;
             info_coffee.Text = coffee1.info_coffee;
-            coffee_two.Text = coffee1.coffee_two;
-            coffee_three.Text = coffee1.coffee_three;
-            coffee_four.Text = coffee1.coffe_four;
+            coffee_two.Content = coffee1.coffee_two;
+            coffee_three.Content = coffee1.coffee_three;
+            coffee_four.Content = coffee1.coffe_four;
 
+        }
+
+        private void coffee_two_Click(object sender, RoutedEventArgs e)
+        {
+            AddToDatabase(coffee_two.Content.ToString());
+        }
+
+        private void coffee_three_Click(object sender, RoutedEventArgs e)
+        {
+            AddToDatabase(coffee_three.Content.ToString());
+        }
+
+        private void coffee_four_Click(object sender, RoutedEventArgs e)
+        {
+            AddToDatabase(coffee_four.Content.ToString());
+        }
+        private void AddToDatabase(string content)
+        {
+            if (string.IsNullOrEmpty(content) || content == "-")
+            {
+                MessageBox.Show("Данный объём отсутствует", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                orders order = new orders();
+                db.orders.Add(order);
+
+                order_coffee order_Coffee = new order_coffee();
+                order_Coffee.id_order = order.id_order;
+                order_Coffee.id_coffee = id;
+                order_Coffee.ml_coffee = content;
+                db.order_coffees.Add(order_Coffee);
+                db.SaveChanges();
+                MessageBox.Show("Напиток добавлен в заказ");
+            }
         }
     }
 }

@@ -22,15 +22,15 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="5">
                     <TextBlock Text="Стоимость объема:" Foreground="#292d30" FontFamily="Zekton" FontWeight="Bold" FontSize="16"/>
-                    <TextBlock FontSize="16" x:Name="coffee_two" Margin="5,0"/>
+                    <Button FontSize="16" x:Name="coffee_two" Margin="5,0" Click="coffee_two_Click"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="5">
                     <TextBlock Text="Стоимость объема:" Foreground="#292d30" FontFamily="Zekton" FontWeight="Bold" FontSize="16"/>
-                    <TextBlock FontSize="16" x:Name="coffee_three" Margin="5,0" />
+                    <Button FontSize="16" x:Name="coffee_three" Margin="5,0" Click="coffee_three_Click"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="5">
                     <TextBlock Text="Стоимость объема:" Foreground="#292d30" FontFamily="Zekton" FontWeight="Bold" FontSize="16"/>
-                    <TextBlock FontSize="16" x:Name="coffee_four" Margin="5,0" />
+                    <Button FontSize="16" x:Name="coffee_four" Margin="5,0" Click="coffee_four_Click"/>
                 </StackPanel>
             </StackPanel>
         </StackPanel>
