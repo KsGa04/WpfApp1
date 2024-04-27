@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4c2af470158b4416be10418013db7095" Name="Diagram1">
+        <EntityTypeShape EntityType="EslettaModel.cafe" Width="1.5" PointX="7.5" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EslettaModel.coffee" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EslettaModel.order_coffee" Width="1.5" PointX="12" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EslettaModel.orders" Width="1.5" PointX="9.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EslettaModel.product_category" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EslettaModel.products" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EslettaModel.provider" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EslettaModel.rolee" Width="1.5" PointX="5.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EslettaModel.status" Width="1.5" PointX="7.5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EslettaModel.type_coffe" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EslettaModel.userr" Width="1.5" PointX="8" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="EslettaModel.FK__orders__id_cafe__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="EslettaModel.FK_cafe_provider" ManuallyRouted="false" />
+        <AssociationConnector Association="EslettaModel.FK__order_cof__id_co__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="EslettaModel.FK_coffee_product_category" ManuallyRouted="false" />
+        <AssociationConnector Association="EslettaModel.FK_coffee_type_coffe" ManuallyRouted="false" />
+        <AssociationConnector Association="EslettaModel.FK__order_cof__id_or__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="EslettaModel.FK_orders_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="EslettaModel.FK_products_product_category" ManuallyRouted="false" />
+        <AssociationConnector Association="EslettaModel.FK_provider_products" ManuallyRouted="false" />
+        <AssociationConnector Association="EslettaModel.FK_userr_rolee" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
