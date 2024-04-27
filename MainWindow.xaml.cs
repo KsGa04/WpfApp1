@@ -33,11 +33,11 @@ namespace WpfApp1
             }
             if (Auth.Role == "администратор")
             {
-                MainFrame.Navigate(new Pages.Menu());
+                MainFrame.Navigate(new Pages.RedactPage());
             }
             else if (Auth.Role == "менеджер")
             {
-                MainFrame.Navigate(new Pages.RedactPage());
+                //MainFrame.Navigate(new Pages.RedactPage());
             }
         }
 
