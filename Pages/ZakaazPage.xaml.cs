@@ -37,15 +37,31 @@ namespace WpfApp1.Pages
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            order = db.orders.Where(x => x.id_status == 1).OrderByDescending(x => x.id_order).FirstOrDefault();
-            order.id_status = 2;
-            order.id_cafe = CmbAdress.SelectedIndex + 1;
-            order.name_user = TxtName.Text;
-            order.delivery_date = Calend.SelectedDate.Value;
-            order.delivery_time = TxtPhone.Text;
-            db.SaveChanges();
-            MessageBox.Show("Вы оформили заказ!");
-            NavigationService.GoBack();
+            if (CmbAdress.SelectedIndex == -1 || TxtName.Text == "" || Calend.SelectedDate.Value == null || TxtPhone.Text == "" || TxtTelephone.Text == "")
+            {
+                MessageBox.Show("Заполните все поля", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else {
+                if (TxtTelephone.Text.Count() > 12)
+                {
+                    MessageBox.Show("Номер телефона введен неверно", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    order = db.orders.Where(x => x.id_status == 1).OrderByDescending(x => x.id_order).FirstOrDefault();
+                    order.id_status = 2;
+                    order.id_cafe = CmbAdress.SelectedIndex + 1;
+                    order.name_user = TxtName.Text;
+                    order.delivery_date = Calend.SelectedDate.Value;
+                    order.delivery_time = TxtPhone.Text;
+                    order.telephone = TxtTelephone.Text;
+                    db.SaveChanges();
+                    MessageBox.Show("Вы оформили заказ!");
+                    NavigationService.GoBack();
+                }
+                
+            }
+            
         }
 
         private void BtnNaz_Click(object sender, RoutedEventArgs e)

@@ -11,7 +11,8 @@ namespace WpfApp1.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.IO;
+
     public partial class coffee
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +20,15 @@ namespace WpfApp1.Models
         {
             this.order_coffee = new HashSet<order_coffee>();
         }
-    
+        public string GetPhoto
+        {
+            get
+            {
+                if (photo_coffee is null)
+                    return null;
+                return Directory.GetCurrentDirectory() + @"\Images\" + photo_coffee.Trim();
+            }
+        }
         public int id_coffee { get; set; }
         public string name_coffe { get; set; }
         public Nullable<int> id_type { get; set; }
