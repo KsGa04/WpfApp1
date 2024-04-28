@@ -17,7 +17,7 @@
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal" Margin="5">
                         <StackPanel Margin="5" >
-                            <TextBlock Margin="2" FontSize="20" Text="{Binding name_coffe}" TextWrapping="Wrap" FontStyle="Italic" Foreground="#53420a"  FontWeight="Bold"  Width="Auto" HorizontalAlignment="Left" />
+                            <TextBlock Margin="2" FontSize="16" Text="{Binding name_coffe}" TextWrapping="Wrap" FontStyle="Italic" Foreground="#53420a"  FontWeight="Bold"  Width="Auto" HorizontalAlignment="Left" />
                             <StackPanel Orientation="Horizontal" Margin="5">
                                 <TextBlock Text="Описание:" FontStyle="Italic" TextWrapping="Wrap" Foreground="#53420a" FontWeight="Bold" FontSize="14" />
                                 <TextBlock FontSize="14" Text="{Binding info_coffee}" Margin="5,0" TextWrapping="Wrap" FontWeight="Bold" Width="475"/>

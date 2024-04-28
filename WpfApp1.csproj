@@ -130,9 +130,6 @@
     <Compile Include="Pages\PostavPage.xaml.cs">
       <DependentUpon>PostavPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\PostavStacanPage.xaml.cs">
-      <DependentUpon>PostavStacanPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\RedactPage.xaml.cs">
       <DependentUpon>RedactPage.xaml</DependentUpon>
     </Compile>
@@ -220,10 +217,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\PostavPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\PostavStacanPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

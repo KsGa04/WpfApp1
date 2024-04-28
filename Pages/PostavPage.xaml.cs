@@ -28,25 +28,20 @@ namespace WpfApp1.Pages
             Lucass.ItemsSource = EslettaEntities.GetContext().providers.OrderBy(p => p.name_provider).ToList();
         }
 
-
-        private void Addone_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Pages.PostavStacanPage());
-        }
-
-        private void Addte_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Pages.PostavCoffePage());
-        }
-
-        private void Addth_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Pages.PostavCoffePage());
-        }
-
         private void Add_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Pages.RedactPage());
+        }
+
+        private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (sender is ListViewItem item)
+            {
+                var product = item.Content as provider;
+                int id = product.id_provider;
+                NavigationService.Navigate(new Pages.PostavCoffePage(id));
+
+            }
         }
     }
 }

@@ -29,7 +29,7 @@
             <ColumnDefinition Width="304*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Text="Оформление заказа" FontSize="20" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="0" Margin="0,7,0,7" Foreground="#292d30"  FontFamily="Zekton"  FontWeight="Bold" Width="198"/>
+        <TextBlock Text="Оформление заказа" FontSize="16" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="0" Margin="0,7,0,7" Foreground="#292d30"  FontFamily="Zekton"  FontWeight="Bold" Width="198"/>
         <TextBlock Text="Имя" FontSize="16" Grid.Column="0" HorizontalAlignment="Left" Grid.Row="1" Margin="193,7,0,7" Foreground="#292d30"  FontFamily="Zekton"  FontWeight="Bold" Width="34"/>
         <TextBlock Text="Выберите адрес кофейни" FontSize="16" HorizontalAlignment="Center" Grid.Row="2" Margin="0,7,0,7" Foreground="#292d30"  FontFamily="Zekton" FontWeight="Bold" Width="200"/>
         <TextBlock Text="Введите номер телефона" FontSize="16" HorizontalAlignment="Center" Grid.Row="3" Margin="0,7,0,7" Foreground="#292d30"  FontFamily="Zekton" FontWeight="Bold" Width="200"/>

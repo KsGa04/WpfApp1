@@ -25,10 +25,10 @@
 
 
         <TextBlock Text="Вход в личный кабинет" FontWeight="UltraBold" FontSize="25" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#292d30"  FontFamily="Zekton"/>
-        <TextBlock Text="Логин" FontWeight="UltraBold" Grid.Row="1" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 20 0" Foreground="#292d30"  FontFamily="Zekton"/>
-        <TextBlock Text="Пароль" FontWeight="UltraBold" Grid.Row="2" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 20 0" Foreground="#292d30"  FontFamily="Zekton"/>
-        <TextBox x:Name="TB" Grid.Column="1" Grid.Row="1" Width="150" Height="30" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-        <PasswordBox x:Name="PB" Grid.Row="2" Grid.Column="1" Width="150" Height="30" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <TextBlock Text="Логин" FontWeight="UltraBold" Grid.Row="1" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 16 0" Foreground="#292d30"  FontFamily="Zekton"/>
+        <TextBlock Text="Пароль" FontWeight="UltraBold" Grid.Row="2" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 16 0" Foreground="#292d30"  FontFamily="Zekton"/>
+        <TextBox x:Name="TB" Grid.Column="1" Grid.Row="1" Width="150" Height="30" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        <PasswordBox x:Name="PB" Grid.Row="2" Grid.Column="1" Width="150" Height="30" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         <Button x:Name="vhod" Content="Вход" Background="Transparent" FontWeight="UltraBold" HorizontalAlignment="Left" VerticalAlignment="Center" Click="vhod_Click"  Foreground="#292d30"  FontFamily="Zekton" Width="100" Height="30" Margin="5" Grid.Row="3" Grid.Column="1" />
 
     </Grid>

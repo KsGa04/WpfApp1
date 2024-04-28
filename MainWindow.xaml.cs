@@ -35,10 +35,6 @@ namespace WpfApp1
             {
                 MainFrame.Navigate(new Pages.RedactPage());
             }
-            else if (Auth.Role == "менеджер")
-            {
-                //MainFrame.Navigate(new Pages.RedactPage());
-            }
         }
 
 

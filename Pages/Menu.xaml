@@ -19,7 +19,7 @@
         </Grid.ColumnDefinitions>
         <TextBlock Text="Адреса кофеен"  FontSize="30" Grid.Column="0" Margin="270 0 0 520" HorizontalAlignment="Left" Grid.Row="0"  Foreground="#292d30"  FontFamily="Zekton"  FontWeight="Bold"/>
 
-        <ListBox x:Name="LBT" Grid.Row="1" Grid.Column="0"  ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="50,20" >
+        <ListBox x:Name="LBT" Grid.Row="1" Grid.Column="0"  ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="50,16" >
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel/>

@@ -22,12 +22,12 @@
 
         <WrapPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Поиск  " Margin="10,10,10,10"  FontSize="20" Foreground="#292d30"  FontFamily="Zekton" FontWeight="Bold"/>
+                <TextBlock Text="Поиск  " Margin="10,10,10,10"  FontSize="16" Foreground="#292d30"  FontFamily="Zekton" FontWeight="Bold"/>
                 <TextBox x:Name="TBoxSerach" TextChanged="TBoxSerach_TextChanged"  Height="25" Width="300"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Категория:" FontSize="20"  Margin="10,10,10,10" Foreground="#292d30" FontFamily="Zekton" FontWeight="Bold"/>
+                <TextBlock Text="Категория:" FontSize="16"  Margin="10,10,10,10" Foreground="#292d30" FontFamily="Zekton" FontWeight="Bold"/>
                 <ComboBox Name="CmbCat" SelectionChanged="CmbCat_SelectionChanged"  DisplayMemberPath="name_type" Height="30" Width="150"/>
             </StackPanel>
         </WrapPanel>
