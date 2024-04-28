@@ -28,11 +28,13 @@ namespace WpfApp1.Models
     
         public virtual DbSet<cafe> cafes { get; set; }
         public virtual DbSet<coffee> coffees { get; set; }
+        public virtual DbSet<delivery> delivery { get; set; }
         public virtual DbSet<order_coffee> order_coffee { get; set; }
         public virtual DbSet<orders> orders { get; set; }
         public virtual DbSet<product_category> product_category { get; set; }
         public virtual DbSet<products> products { get; set; }
         public virtual DbSet<provider> providers { get; set; }
+        public virtual DbSet<provider_products> provider_products { get; set; }
         public virtual DbSet<rolee> rolees { get; set; }
         public virtual DbSet<status> status { get; set; }
         public virtual DbSet<type_coffe> type_coffe { get; set; }

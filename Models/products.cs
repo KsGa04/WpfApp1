@@ -17,15 +17,18 @@ namespace WpfApp1.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public products()
         {
-            this.provider = new HashSet<provider>();
+            this.delivery = new HashSet<delivery>();
+            this.provider_products = new HashSet<provider_products>();
         }
     
         public int id_products { get; set; }
         public string name_products { get; set; }
         public int id_category { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<delivery> delivery { get; set; }
         public virtual product_category product_category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<provider> provider { get; set; }
+        public virtual ICollection<provider_products> provider_products { get; set; }
     }
 }

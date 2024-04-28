@@ -19,6 +19,8 @@ namespace WpfApp1.Models
         public provider()
         {
             this.cafe = new HashSet<cafe>();
+            this.delivery = new HashSet<delivery>();
+            this.provider_products = new HashSet<provider_products>();
         }
         public string GetPhoto
         {
@@ -33,10 +35,12 @@ namespace WpfApp1.Models
         public string name_provider { get; set; }
         public string photo_provider { get; set; }
         public string info_provider { get; set; }
-        public int id_products { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<cafe> cafe { get; set; }
-        public virtual products products { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<delivery> delivery { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<provider_products> provider_products { get; set; }
     }
 }
